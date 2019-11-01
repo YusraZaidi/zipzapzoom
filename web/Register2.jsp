@@ -11,6 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+    
     Class.forName("com.mysql.jdbc.Driver");
     String email=(String)session.getAttribute("email");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zipzapzoom","root","");

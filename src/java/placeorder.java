@@ -4,13 +4,11 @@
  * and open the template in the editor.
  */
 
-
+import connection.MyCon;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
-import static java.sql.DriverManager.getConnection;
 import java.sql.PreparedStatement;
 import java.util.Calendar;
 import java.util.HashSet;
@@ -52,10 +50,10 @@ public class placeorder extends HttpServlet {
            HashSet<String> arr=new HashSet<String>();
            arr.add(d.toString());
            arr.add(email);
-           String oid=Integer.toString(arr.hashCode());
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/zipzapzoom","root","");
- 
-           PreparedStatement ps=con.prepareStatement("insert into query_table(oid,l_place,l_date,d_place,d_date,desc_item,weight,cust_email,status) values(?,?,?,?,?,?,?,?,?)");
+           String oid="";
+           oid=Integer.toString(arr.hashCode());
+           Connection con=MyCon.getConnection();
+           PreparedStatement ps=con.prepareStatement("insert into query_table(oid,l_place,l_date,d_place,d_date,description,weight,cust_email,status) values(?,?,?,?,?,?,?,?,?)");
             ps.setString(1,oid);
             ps.setString(2,request.getParameter("l_place"));
             ps.setString(3,request.getParameter("l_date"));
@@ -65,13 +63,19 @@ public class placeorder extends HttpServlet {
             ps.setString(7,request.getParameter("weight"));
             ps.setString(8, email);
             ps.setString(9,"a");
-            if(ps.executeUpdate()>0)
-                    out.println("yea");
+            String msg="A new order query has been added for oid "+oid;  
+                PreparedStatement ps1=con.prepareStatement("insert into notification values(?,?,?)");
+                  ps1.setString(1,"aa");
+                  ps1.setString(2,oid);
+                  ps1.setString(3,msg);
+               
+             if( ps.executeUpdate()>0 && ps1.executeUpdate()>0)
+                 response.sendRedirect("cust_homepage.jsp");
             else
                 out.println("no");
         }
         catch(Exception e){
-            System.out.println(e);
+            out.println(e);
         }
     }
 

@@ -44,7 +44,7 @@ try{
 </head>
 <body>
     
-    <%if(flag==0){ response.sendRedirect("HomeTransporter.jsp");
+    <%if(flag==1){ response.sendRedirect("HomeTransporter.jsp");
 }else{%>
 <p>Payment Failed</p>
 <a href="Register2.jsp">Retry</a>

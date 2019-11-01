@@ -18,5 +18,6 @@
             <input type="password" placeholder="Password" name="password"/>
             <input type="submit" value="Log in"/>
         </form>
+        
     </body>
 </html>
