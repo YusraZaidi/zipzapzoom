@@ -8,9 +8,12 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+    SimpleDateFormat fm=new SimpleDateFormat("E MMM dd HH:mm:ss yyyy"); 
     Class.forName("com.mysql.jdbc.Driver");
     String email=(String)session.getAttribute("email");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zipzapzoom","root","");
@@ -22,7 +25,19 @@
     int approval=0;
     int flag=0;
     if(rs.next()){
-        if(rs.getString(5)!=null)
+        String s1=rs.getString(5);
+        int duration=rs.getInt(4);
+        String s2=s1.substring(0,20)+s1.substring(24,28);
+        Date d1=fm.parse(s2);
+        
+        Date d2=new Date();
+        float difference=d2.getTime()-d1.getTime();
+	    float days_difference=difference/(1000*60*60*24);
+	    
+	    //float time_difference=difference/(1000*60*60)%24;
+            int datediff=(int)days_difference;
+        
+        if(time!=null&&datediff<=duration)
         joiningdate=rs.getString(5);
         flag=1;
     }

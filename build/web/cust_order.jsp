@@ -1,10 +1,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<% String ch=(String)session.getAttribute("checked");
-    if(ch!="yes"){
-        response.sendRedirect("cust_login.jsp");
-    }
+<% 
+    
     String email=(String)session.getAttribute("email");
 %>
 <html>

@@ -12,11 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="cust_order.jsp">placeorder</a>
+        <a href="cust_order.jsp">placeorder</a><br/>
         <a href="bidingongoing.jsp">Biding Ongoing</a><br/>
         <a href="currentordersstatus.jsp">Orders Ongoing</a><br/>
-        <a href="perviousorder.jsp">Previous Orders</a><br/>
-        <a href="Notification.jsp">Notifications</a><br/>
+        <a href="previousorder.jsp">Previous Orders</a><br/>
+        <a href="notification.jsp">Notifications</a><br/>
         <a href="accountupdate.jsp">Manage Account</a><br/>
         <a href="logout">Logout</a>
     </body>

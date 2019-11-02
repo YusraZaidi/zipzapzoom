@@ -56,15 +56,17 @@ public class CheckUser extends HttpServlet {
                 session.setAttribute("checked", "yes");
                 String email=rs.getString(1);
                 session.setAttribute("email", email);
+
                 String utype=rs.getString(7);
-                 String approval=rs.getString(5);
+                session.setAttribute("utype", utype);
+                String approval=rs.getString(5);
                 session.setAttribute("approval",approval);
 //                String unm=rs.getString(2);
 //                session.setAttribute("username", unm);
                 if(utype.equalsIgnoreCase("Transporter"))
                     response.sendRedirect("Register2.jsp");
                 else
-                    response.sendRedirect("HomeCustomer.jsp");
+                    response.sendRedirect("cust_homepage.jsp");
             }
             else{
                 
