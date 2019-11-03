@@ -28,6 +28,30 @@
         <servlet-name>placeorder</servlet-name>
         <servlet-class>placeorder</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>up_q</servlet-name>
+        <servlet-class>up_q</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>aa_verify</servlet-name>
+        <servlet-class>aa_verify</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updatebid</servlet-name>
+        <servlet-class>updatebid</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>acc_up</servlet-name>
+        <servlet-class>acc_up</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>custpayment</servlet-name>
+        <servlet-class>custpayment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>alltransporter</servlet-name>
+        <servlet-class>alltransporter</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>resgisterUser</servlet-name>
         <url-pattern>/resgisterUser</url-pattern>
@@ -55,6 +79,30 @@
     <servlet-mapping>
         <servlet-name>placeorder</servlet-name>
         <url-pattern>/placeorder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>up_q</servlet-name>
+        <url-pattern>/up_q</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>aa_verify</servlet-name>
+        <url-pattern>/aa_verify</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updatebid</servlet-name>
+        <url-pattern>/updatebid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acc_up</servlet-name>
+        <url-pattern>/acc_up</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>custpayment</servlet-name>
+        <url-pattern>/custpayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>alltransporter</servlet-name>
+        <url-pattern>/alltransporter</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,18 +1,36 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.time.LocalTime"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@page import="java.util.*" %>  
+ <%@page import="java.util.Date"%>
  <%
+      //LocalTime d=LocalTime.now();
+      Date d2=new Date();
+      String date=d2.toString();
  	Random randomGenerator = new Random();
 	int randomInt = randomGenerator.nextInt(1000000);
         String name=(String)request.getParameter("type");
-        int amt=0;
+        int amt=0,dur=0;
         if(name.equals("1 month Rs.20000")){
-            amt=2;
+            amt=2;dur=30;
         }else if(name.equals("3 month Rs.50000")){
-            amt =5;
+            amt =5;dur=90;
         }else{
-            amt=1;
+            amt=1;dur=365;
         }
+        String email=(String)session.getAttribute("email");
+    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zipzapzoom","root","");
+    PreparedStatement ps = con.prepareStatement("update transporterMain set dealershipduration=?,joiningDate=? where emailaddress=?");
+     ps.setInt(1,dur);
+    ps.setString(2,date);
+    ps.setString(3,email);
+    int n = ps.executeUpdate();
+    
+
  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
