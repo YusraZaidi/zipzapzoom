@@ -8,9 +8,12 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+    SimpleDateFormat fm=new SimpleDateFormat("E MMM dd HH:mm:ss yyyy"); 
     Class.forName("com.mysql.jdbc.Driver");
     String email=(String)session.getAttribute("email");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zipzapzoom","root","");
@@ -22,7 +25,9 @@
     int approval=0;
     int flag=0;
     if(rs.next()){
-        if(rs.getString(5)!=null)
+        String time=rs.getString(5);
+        int duration=rs.getInt(4);
+        if(time!=null)
         joiningdate=rs.getString(5);
         flag=1;
     }
@@ -51,7 +56,7 @@
         </form>
         <%} else if(approval==0&&flag==1){%>
         <h1>Your profile is under verification</h1>
-        <%} else if(approval==-1&&flag==1){%>
+        <%} else if(approval==2&&flag==1){%>
         <h1>Update your details </h1>
         <a href="accountupdate.jsp">Manage Account</a><br/>
         <%}else if(joiningdate.equals("$")){%>

@@ -49,6 +49,13 @@ public class resgisterUser extends HttpServlet {
             //ps.setInt(4,Integer.parseInt(request.getParameter("time1")));
             int n = ps.executeUpdate();
             if(n>0){
+                if(request.getParameter("type").equals("Transporter")){
+                    PreparedStatement ps1=con.prepareStatement("insert into notification values(?,?,?)");
+                    ps1.setString(1,"aa");
+                    ps1.setString(2,"0");
+                    ps1.setString(3,"A new Transporter has been added");
+                   int k = ps1.executeUpdate();
+                }
                 response.sendRedirect("Login.jsp");
             }
             else{
